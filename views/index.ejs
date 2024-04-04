@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Notes</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,7 +21,7 @@
                <h3><%= note.title %></h3>
                <p><%= note.content %></p>
                <a href="/notes/edit/<%= note._id %>">Edit</a>
-               <button data-note-id="<%= note._id %>" onclick="deleteNote(this)">Delete</button>git brancg
+               <button data-note-id="<%= note._id %>" onclick="deleteNote(this)">Delete</button>
            </div>
        <% }); %>
        <script>

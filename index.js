@@ -11,6 +11,9 @@ mongoose.connect('mongodb://localhost/studentNotes', { useNewUrlParser: true, us
 // Set EJS as templating engine
 app.set('view engine', 'ejs');
 
+//Css
+app.use(express.static('public'));
+
 // Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 

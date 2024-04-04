@@ -1,0 +1,35 @@
+title{
+    text-align: center;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #50a3a2;
+    color: white;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+footer {
+    background: #50a3a2;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
