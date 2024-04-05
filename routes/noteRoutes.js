@@ -1,6 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const Note = require('../models/note');
+const app = express();
+app.use(express.json());
+
+app.post('/notes', async (req, res) => {
+    try {
+        const note = await Note.create({
+            title: req.body.title,
+            content: req.body.content
+        });
+        res.status(201).send(note);
+    } catch (error) {
+        console.error("Failed to create note:", error);
+        res.status(500).send("Error creating note.");
+    }
+});
+
+// Make sure to listen on a port
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
 
 // Display all notes
 router.get('/', async (req, res) => {

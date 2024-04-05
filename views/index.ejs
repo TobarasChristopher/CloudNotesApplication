@@ -1,52 +1,42 @@
-<!-- index.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Notes</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <h1>Student Notes</h1>
-    <form action="/add" method="post">
-        <input type="text" name="title" placeholder="Title" required>
-        <textarea name="content" placeholder="Content" required></textarea>
-        <button type="submit">Add Note</button>
-    </form>
-    <ul>
-       <% notes.forEach(note => { %>
-           <div>
-               <h3><%= note.title %></h3>
-               <p><%= note.content %></p>
-               <a href="/notes/edit/<%= note._id %>">Edit</a>
-               <button data-note-id="<%= note._id %>" onclick="deleteNote(this)">Delete</button>
-           </div>
-       <% }); %>
-       <script>
-       function deleteNote(element) {
-           const noteId = element.getAttribute('data-note-id');
-           const confirmation = confirm("Are you sure you want to delete this note?");
-
-           if (confirmation) {
-               $.ajax({
-                   url: `/notes/delete/${noteId}`,
-                   type: 'DELETE', // Using DELETE method
-                   success: function(result) {
-                       // On success, redirect to the homepage or notes list
-                       window.location.href = '/notes';
-                   },
-                   error: function(error) {
-                       // Handle error scenario
-                       alert('Error deleting note. Please try again.');
-                       console.error(error);
-                   }
-               });
-           }
-       }
-       </script>
-    </ul>
+    <div>
+        <form action="/add" method="POST">
+            <input type="text" name="title" placeholder="Note Title" required>
+            <textarea name="content" rows="4" placeholder="Note Content" required></textarea>
+            <button type="submit">Add Note</button>
+        </form>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% notes.forEach(function(note) { %>
+                <tr>
+                    <td><%= note.title %></td>
+                    <td><%= note.content %></td>
+                    <td>
+                        <a href="/edit/<%= note.id %>">Edit</a> |
+                        <a href="/delete/<%= note.id %>" onclick="return confirm('Are you sure?');">Delete</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
 </body>
-<a href="/notes/add" class="btn btn-primary">Add Note</a>
 </html>
