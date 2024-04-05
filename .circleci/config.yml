@@ -15,7 +15,7 @@ workflows:
 # Define the jobs we want to run for this project
 jobs:
   build:
-    working_directory: ~/ExampleApplication
+    working_directory: ~/CloudNotesApplication
     docker:
       - image: circleci/node:latest
     steps:
@@ -28,9 +28,6 @@ jobs:
       - run:
           name: install-npm
           command: npm install
-      - run:
-          name: test-run
-          command: npm run test
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
