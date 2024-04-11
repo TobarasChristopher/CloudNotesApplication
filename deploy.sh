@@ -28,4 +28,4 @@ cd CloudNotesApplication/
 npm install
 
 #start www process using pm2
-pm2 start app.js --name DevOpsSecCA
+pm2 start app.js --name CloudNotesApplication
