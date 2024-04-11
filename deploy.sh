@@ -15,6 +15,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm install 18
 nvm use 18
 
+
 #install pm2 globally
 npm install -g pm2
 
@@ -25,6 +26,7 @@ pm2 stop CloudNotesApplication
 cd CloudNotesApplication/
 
 #install npm without sudo (creates issues)
+rm -rf node_modules
 npm install
 
 #start www process using pm2
