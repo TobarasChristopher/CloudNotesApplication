@@ -7,7 +7,7 @@ const PORT = 3773;
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // Database setup
 const db = new sqlite3.Database('./database/database.sqlite');
