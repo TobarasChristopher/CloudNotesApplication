@@ -9,6 +9,10 @@ workflows:
             branches:
               only:
                 - main
+      - manual_approval:
+          type: approval
+          requires:
+            - deploy
       - deploy:
           filters:
             branches:
@@ -16,10 +20,7 @@ workflows:
                 - main
           requires:
             - build
-      - manual_approval:
-          type: approval
-          requires:
-            - deploy
+
 
 # Define the jobs we want to run for this project
 jobs:
