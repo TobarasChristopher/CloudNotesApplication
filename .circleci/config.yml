@@ -9,8 +9,13 @@ workflows:
             branches:
               only:
                 - main
-
-
+      - deploy:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - build
 
 # Define the jobs we want to run for this project
 jobs:
@@ -32,3 +37,10 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+  deploy:
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - run:
+          name: deploy-application
+          command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS "rm -rf CloudNotesApplication/;git clone https://github.com/TobarasChristopher/CloudNotesApplication.git; source CloudNotesApplication/deploy.sh"
