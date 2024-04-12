@@ -1,3 +1,5 @@
 This webiste is made using intelliJ IDEA Community Edition with json, js and ejs files with HTML language used. 
 To run this program, all you have to do is open the temrinal and type git and the home page which is index.js.
 Then in your prefered rowser of choice, go to the address https://localhost:3773 and you should be on the home page.
+
+Example Text Here

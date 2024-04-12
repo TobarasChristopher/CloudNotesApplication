@@ -13,6 +13,8 @@ npm install -g pm2
 pm2 stop CloudNotesApplication
 cd CloudNotesApplication/
 
+
+
 rm -rf node_modules
 npm install
 
