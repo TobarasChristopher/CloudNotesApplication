@@ -12,14 +12,14 @@ workflows:
       - manual_approval:
           type: approval
           requires:
-            - deploy
+            - build
       - deploy:
           filters:
             branches:
               only:
                 - main
           requires:
-            - build
+            - manual_approval
 
 
 # Define the jobs we want to run for this project
